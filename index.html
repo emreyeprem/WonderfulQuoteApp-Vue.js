@@ -24,10 +24,15 @@
     </div>
 
 
+   <div id="app3">
+
+   </div>
+
+
     <script>
     //  vm means View Model
     let vm1 = new Vue({
-      el: '#app1',
+      // el: '#app1',           // instead of 'el' you can use '$mount'
       data: {
         title: 'The VueJS Instance',
         showParagraph: false
@@ -55,6 +60,10 @@
     });
 
     // ======== Independent from INSTANCES JS Code ========
+       vm1.$mount('#app1');
+
+       vm1.$refs.heading.innerText = 'Something else';
+
        setTimeout(function(){
          vm1.title = 'Changed by Timer';
          vm1.show()
@@ -74,7 +83,15 @@
       }
 
 
-    })
+    });
+
+
+    let vm3 = new Vue({
+      template: '<h1>Hello!</h1>'
+    });
+
+    vm3.$mount('#app3')
+
 
     </script>
 
