@@ -21,10 +21,15 @@
     <div id="app2">
       <h1 ref="heading">{{ title }}</h1>
       <button @click="onChange">Change something in Vue 1</button>
+          <hello></hello>
     </div>
 
 
-   <div id="app3">
+   <div id="app3"></div>
+
+
+   <div id="app4">
+    <h1>{{ title }}</h1>
 
    </div>
 
@@ -60,6 +65,11 @@
     });
 
     // ======== Independent from INSTANCES JS Code ========
+
+       Vue.component('hello', {
+         template: '<h2>Hi there!</h2>'
+       })
+
        vm1.$mount('#app1');
 
        vm1.$refs.heading.innerText = 'Something else';
@@ -69,7 +79,7 @@
          vm1.show()
        }, 3000);
 
-  // ==================== New Instance =====================
+  // ==================== vm2 New Instance =====================
 
     let vm2 = new Vue({
       el: '#app2',
@@ -85,14 +95,33 @@
 
     });
 
-
+ // ===================== vm3 New Instance =================
     let vm3 = new Vue({
-      
       template: '<h1>Hello!</h1>'
     });
     // vm3.$mount('#app3')
-    // vm3.$mount();             // uncommon way to use $el
-    // document.getElementById('app3').appendChild(vm3.$el);
+    vm3.$mount();             // uncommon way to use $el
+    document.getElementById('app3').appendChild(vm3.$el);
+
+
+  // ===================== vm4 New Instance =================
+
+    new Vue({
+      el: '#app4',
+      data: {
+        title: 'The VueJS Instance Lifecycle'
+      },
+      beforeCreate: function(){
+        console.log('beforeCreate()');
+      },
+      created: function(){
+        console.log('created()');
+      },
+      beforeMount: function(){
+        console.log('beforeMount()');
+      }
+    })
+
 
 
     </script>
