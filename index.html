@@ -40,7 +40,9 @@
 
 
 
-  <div id="app5"></div>
+  <div id="app5">
+    <my-comp></my-comp>
+  </div>
 
 
 
@@ -163,13 +165,20 @@
 
    // ===================== vm5 New Instance =================
 
-   new Vue({
-     el: '#app5',
-     data: {
-       status: 'Critical'
+   Vue.component('my-comp', {
+     data: function() {
+        return { status: 'Critical'
+       }
      },
      template: '<p>Server Status: {{ status }}</p>'
    })
+
+   new Vue({
+     el: '#app5',
+
+   })
+
+   // =========================================================
 
 
     </script>
