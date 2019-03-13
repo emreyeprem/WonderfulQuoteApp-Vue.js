@@ -30,9 +30,14 @@
 
    <div id="app4">
     <h1>{{ title }}</h1>
-
+    <button @click="title='Changed'">Update Title</button>
+    <button @click="destroy">Destroy</button>
    </div>
 
+
+
+
+<!-- ****************** VUE INSTANCES ************************ -->
 
     <script>
     //  vm means View Model
@@ -111,6 +116,7 @@
       data: {
         title: 'The VueJS Instance Lifecycle'
       },
+
       beforeCreate: function(){
         console.log('beforeCreate()');
       },
@@ -119,7 +125,30 @@
       },
       beforeMount: function(){
         console.log('beforeMount()');
+      },
+      mounted: function(){
+        console.log('mounted()');
+      },
+      beforeUpdate: function(){
+        console.log('beforeUpdate()');
+      },
+      updated: function(){
+        console.log('updated()');
+      },
+      beforeDestroy: function(){
+        console.log('beforeDestroy()');
+      },
+      destroyed: function(){
+        console.log('destroyed()');
+      },
+
+      methods: {
+        destroy: function(){
+          this.$destroy();
+        }
       }
+
+
     })
 
 
