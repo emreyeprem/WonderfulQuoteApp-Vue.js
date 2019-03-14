@@ -48,6 +48,14 @@
 
 
 
+  <div id="app6">
+    <my-comp></my-comp>
+    <hr />
+    <my-comp></my-comp>
+  </div>
+
+
+
 
 <!-- ********************************************************* -->
 <!-- ******$$$$$$$$****** VUE INSTANCES ******$$$$$$********** -->
@@ -169,7 +177,8 @@
 
    // var data = { status: 'Critical' };
 
-   Vue.component('my-comp', {
+   //Vue.component('my-comp', {alttaki var comp'un karsiligi buraya yazilabilir})
+   var comp = {
      data: function() {
         return {
           status: 'Critical'
@@ -181,14 +190,22 @@
          this.status = 'Normal';
        }
      }
-   })
+   };
 
    new Vue({
      el: '#app5',
+     components: {
+       'my-comp': comp
+     }
 
    })
 
-   // =========================================================
+   // ================== vm6 New Instance ==================
+
+   new Vue({
+     el: '#app6'
+   })
+
 
 
     </script>
